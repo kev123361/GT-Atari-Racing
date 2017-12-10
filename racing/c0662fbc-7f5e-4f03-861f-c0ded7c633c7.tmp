@@ -1,0 +1,75 @@
+ rem Generated 12/3/2017 10:17:28 AM by Visual bB Version 1.0.0.554
+ rem **********************************
+ rem *<filename>                      *
+ rem *<description>                   *
+ rem *<author>                        *
+ rem *<contact info>                  *
+ rem *<license>                       *
+ rem **********************************
+
+
+ rem Generated 11/28/2017 6:32:03 PM by Visual bB Version 1.0.0.554
+ rem **********************************
+ rem *<filename>                      *
+ rem *<description>                   *
+ rem *<author>                        *
+ rem *<contact info>                  *
+ rem *<license>                       *
+ rem **********************************
+
+ set romsize 2k
+ COLUBK  =  196
+
+
+
+ player0x = 50 : player0y = 50
+ player1x = 100 : player1y = 50
+
+sprites
+ COLUP0  =  30
+ player0:
+ %01000010
+ %01000010
+ %01111110
+ %01111110
+ %00111100
+ %00011000
+ %00011000
+ %00011000
+end
+
+ COLUP1  =  68
+ player1:
+ %01000010
+ %01000010
+ %01111110
+ %01111110
+ %00111100
+ %00011000
+ %00011000
+ %00011000
+end
+
+draw_loop
+ drawscreen
+
+ if joy0up  &&  player0y  >  10 then player0y  =  player0y - 1 : goto play1move
+ if joy0down  &&  player0y  <  87 then player0y  =  player0y + 1 : goto play1move
+ if joy0left  &&  player0x  >  48 player0x  =  player0x - 1 : goto play1move
+ if joy0right then player0x  =  player0x + 1 : goto play1move
+
+ goto play1move
+
+play1move
+ if joy1up then player1y  =  player1y - 1 : goto jump
+ if joy1down then player1y  =  player1y + 1 : goto jump
+ if joy1left then player1x  =  player1x - 1 : goto jump
+ if joy1right then player1x  =  player1x + 1 : goto jump
+
+
+ goto jump
+
+jump
+ goto sprites
+
+ 
